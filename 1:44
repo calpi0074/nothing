@@ -1,0 +1,41 @@
+import time
+
+current_date = time.strftime('%m%d')
+
+target_date = '1114'
+
+you = 'student'
+
+def calculate_month_day_diff(current, target):
+    current_month = int(current[:2])
+    current_day = int(current[2:])
+
+    target_month = int(target[:2])
+    target_day = int(target[2:])
+
+    if current > target:
+        target_month += 12
+
+    months = target_month - current_month
+
+    if current_day > target_day:
+        months -= 1
+        days = (30 - current_day) + target_day
+    else:
+        days = target_day - current_day
+
+    return months, days
+months, days = calculate_month_day_diff(current_date, target_date)
+
+while you != 'doctor':
+    if current_date == '1206':
+        failure = int(input('How many you missed : '))
+        if failure < 8:
+            you = 'doctor'
+            print(':)')
+        else:
+            print(':(')
+            time.sleep(31556926)
+    else:
+        print(f"you have {months}months and {days}days :(")
+        exit()
