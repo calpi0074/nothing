@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main()
+{
+    double colist[4][2];
+
+    colist[0][0] = 0;
+    colist[0][1] = 0;
+
+    colist[1][0] = 1;
+    colist[1][1] = 8;
+
+    colist[2][0] = 5;
+    colist[2][1] = 0;
+
+    colist[3][0] = 7;
+    colist[3][1] = 9;
+
+    double co[1][2];
+
+    printf("좌표를 입력하세요 : \n");
+
+    scanf_s("%lf", &co[0][0]);
+    scanf_s("%lf", &co[0][1]);
+
+    double area = 46.0;
+    double tri[4];
+
+    int i = 0;
+    int j = 1;
+    double tot = 0;
+    while (i < 4 && j < 5) {
+        tri[i] = (colist[i][i] * colist[j][j] + colist[j][i] * co[0][1] - colist[i][j] * colist[j][i] - co[0][0] * colist[j][j]) * 0.5;
+        if (tri[i] < 0) {
+            tri[i] = -tri[i];
+        }
+        else {
+        }
+
+        tot += tri[i];
+
+        i++;
+        j++;
+    }
+
+    if (tot == area) {
+        printf("해당 점은 사각형 내에 있습니다.");
+    }
+    else {
+        printf("해당 점은 사각형 내에 없습니다.");
+    }
+
+    return 0;
+}
